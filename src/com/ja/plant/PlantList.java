@@ -3,9 +3,7 @@ package com.ja.plant;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class PlantList {
     private List<Plant> plants = new ArrayList<>();
@@ -73,15 +71,27 @@ public class PlantList {
 
 
     //Odebrani kvetiny ze seznamu
-    public void removePlant(Plant plant){
+    public void removePlant(int index){
         System.out.println("Removing plant from list.");
-        plants.remove(plant);
+        plants.remove(index);
     }
 
     //Pridani vice kvetin najednou - pridam cely seznam kvetin
     public void addPlants(List<Plant> plants){
         this.plants.addAll(plants);
     }
+
+    //
+    public StringBuilder getPlantsSortedByWatering() {
+        List<Plant> sortedPlants = new ArrayList<>(plants);
+        sortedPlants.sort(Comparator.comparing(Plant::getWateringInfo));
+        StringBuilder wateringInfo = new StringBuilder();
+        for (Plant plant : sortedPlants) {
+            wateringInfo.append(plant.getWateringInfo());
+        }
+        return wateringInfo;
+    }
+
 
 
 }
