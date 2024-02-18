@@ -44,7 +44,7 @@ public class Main {
         plantList.removePlant(2);
 
         //Vypis seznamu kvetin
-        System.out.println("List of flowers: \n"+plantList.getPlants());
+        System.out.println("List of plants: \n"+plantList.getPlants());
 
         //Vypsani a setrizeni infa o zalivce vsech kvetin
         System.out.println("Info about watering (sorted):\n" + plantList.getPlantsSortedByWatering());
