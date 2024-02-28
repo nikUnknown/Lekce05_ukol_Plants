@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.*;
 
+import static com.ja.plant.Settings.getDelimiter;
+
 public class PlantList {
     private List<Plant> plants = new ArrayList<>();
 
@@ -16,17 +18,17 @@ public class PlantList {
                 lineCounter++;
                 String line = scanner.nextLine();
                 System.out.println(line);
-                String[] parts = line.split(";");
+                String[] parts = line.split(getDelimiter());
                 if(parts.length != 5) {
-                    String name = parts[0];
-                    String notes = parts[1];
-                    int wateringFrequency = Integer.parseInt(parts[2]);
-                    LocalDate watering = LocalDate.parse(parts[3]);
-                    LocalDate planted = LocalDate.parse(parts[4]);
-                    Plant plant = new Plant(name, notes, wateringFrequency, watering, planted);
-                    plants.add(plant);
                     throw new PlantException("Missing item on line" +lineCounter+ ":" +line+ "!");
                 }
+                String name = parts[0];
+                String notes = parts[1];
+                int wateringFrequency = Integer.parseInt(parts[2]);
+                LocalDate watering = LocalDate.parse(parts[3]);
+                LocalDate planted = LocalDate.parse(parts[4]);
+                Plant plant = new Plant(name, notes, wateringFrequency, watering, planted);
+                plants.add(plant);
             }
         } catch (FileNotFoundException e) {
             System.err.println("File " +fileName+ " was not found.\n" +e.getLocalizedMessage());
@@ -41,9 +43,9 @@ public class PlantList {
         try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName)))) {
             for (Plant plant : plants) {
                 writer.println(
-                        plant.getName() + Settings.getDelimiter() +
-                                plant.getNotes() + Settings.getDelimiter() +
-                                plant.getWateringInfo() + Settings.getDelimiter() +
+                        plant.getName() + getDelimiter() +
+                                plant.getNotes() + getDelimiter() +
+                                plant.getWateringInfo() + getDelimiter() +
                                 plant.getPlanted());
             }
         } catch (IOException e) {

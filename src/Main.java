@@ -23,7 +23,7 @@ public class Main {
             System.err.println("Error during loading a file: " +filename+ ":\n" + e.getLocalizedMessage());
         }
 
-        System.out.println("List of plants:\n" + plantList.getPlants());
+        System.out.println("List of plants:\n" + plantList.getPlants()+"\n");
 
         // Pridani novych kvetin
         try {
