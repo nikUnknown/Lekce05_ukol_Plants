@@ -14,20 +14,21 @@ public class Main {
         System.out.println("   FLOWERS   \n");
 
         String filename = Settings.getFilename();
+        String filenameout = Settings.getFileNameOut();
 
         PlantList plantList = new PlantList();
 
         try {
             plantList.loadContentFromFile(filename);
         } catch (PlantException e) {
-            System.err.println("Error during loading a file: " +filename+ ":\n" + e.getLocalizedMessage());
+            System.err.println("Error during loading a file: " + filename + ":\n" + e.getLocalizedMessage());
         }
 
-        System.out.println("List of plants:\n" + plantList.getPlants()+"\n");
+        System.out.println("\nList of plants: " + plantList.getPlants() + "\n");
 
         // Pridani novych kvetin
         try {
-            plantList.addPlant(new Plant("Africka kopriva", "jedovata",7, LocalDate.of(2023, 8, 12), LocalDate.of(2023, 8, 10)));
+            plantList.addPlant(new Plant("Africka kopriva", "jedovata", 7, LocalDate.of(2023, 8, 12), LocalDate.of(2023, 8, 10)));
         } catch (PlantException e) {
             throw new PlantException("File was not saved correctly.\n" + e.getLocalizedMessage());
         }
@@ -41,14 +42,31 @@ public class Main {
         plantList.getPlantByIndex(1);
 
         // Odebrani kvetiny
-        plantList.removePlant(2);
+        try {
+            plantList.removePlant(2);
+        }catch (IndexOutOfBoundsException e) {
+            System.err.println("Plant can not be removed.\n" + e.getLocalizedMessage());
+        }
 
         //Vypis seznamu kvetin
-        System.out.println("List of plants: \n"+plantList.getPlants());
+        System.out.println("\nList of plants: " + plantList.getPlants());
 
         //Vypsani a setrizeni infa o zalivce vsech kvetin
-        System.out.println("Info about watering (sorted):\n" + plantList.getPlantsSortedByWatering());
+        System.out.println("\nInfo about watering (sorted): " + plantList.getPlantsSortedByWatering());
 
+        //Zapis kvetin do noveho seznamu
+        plantList.savePlantsToFile(filenameout);
+        System.out.println("*************");
 
+        //Opetovne nacteni vygenerovaneho souboru
+        System.out.println("Printing file again:");
+        plantList.loadContentFromFile(filenameout);
+
+        System.out.println("\nSorted lists of plants:");
+        //Vypis kvetin serazenych podle jmena
+        System.out.println(plantList.getPlantsSortedByName());
+
+        //Vypis kvetin serazenych podle posledni zalivky
+        System.out.println(plantList.getPlantsSortedByLastWatering());
     }
 }

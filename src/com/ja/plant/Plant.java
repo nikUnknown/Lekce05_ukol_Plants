@@ -15,9 +15,9 @@ public class Plant {
     public String getWateringInfo() {
         LocalDate lastWatering = watering;
         LocalDate nextWateringDate = watering.plusDays(frequencyOfWatering);
-        return "Plant: " + name + "\n"
+        return "\nPlant: " + name + "\n"
                 + "Last watering date: " + lastWatering + "\n"
-                + "Next watering date: " + nextWateringDate;
+                + "Next watering date: " + nextWateringDate +"\n";
     }
 
     //Konstruktory
@@ -87,4 +87,13 @@ public class Plant {
         this.frequencyOfWatering = frequencyOfWatering;
     }
 
+    @Override
+    public String toString() {
+        return "\nPlant:" +
+                "name='" + name + '\'' +
+                ", notes='" + notes + '\'' +
+                ", planted=" + planted +
+                ", watering=" + watering +
+                ", frequencyOfWatering=" + frequencyOfWatering;
+    }
 }

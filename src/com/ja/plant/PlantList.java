@@ -10,9 +10,34 @@ import static com.ja.plant.Settings.getDelimiter;
 public class PlantList {
     private List<Plant> plants = new ArrayList<>();
 
+    //Serazeni rostlin podle nazvu
+    public StringBuilder getPlantsSortedByName() {
+        List<Plant> sortedPlants = new ArrayList<>(plants);
+        Collections.sort(sortedPlants, Comparator.comparing(Plant::getName));
+        StringBuilder nameInfo = new StringBuilder();
+        for (Plant plant : sortedPlants) {
+            nameInfo.append(plant.toString());
+        }
+        return nameInfo;
+    }
+
+    //Serazeni rostlin podle nazvu
+    public StringBuilder getPlantsSortedByLastWatering() {
+        List<Plant> sortedPlants = new ArrayList<>(plants);
+        Collections.sort(sortedPlants, Comparator.comparing(Plant::getWatering));
+        StringBuilder wateringInfo = new StringBuilder();
+        for (Plant plant : sortedPlants) {
+            wateringInfo.append(plant.toString());
+        }
+        return wateringInfo;
+    }
+
+
+
     //Metoda pro nacteni obsahu souboru
     public void loadContentFromFile(String fileName) throws PlantException {
         int lineCounter = 0;
+        plants.clear();
         try (Scanner scanner = new Scanner(new BufferedReader(new FileReader(fileName)))) {
             while (scanner.hasNextLine()) {
                 lineCounter++;
@@ -31,21 +56,25 @@ public class PlantList {
                 plants.add(plant);
             }
         } catch (FileNotFoundException e) {
-            System.err.println("File " +fileName+ " was not found.\n" +e.getLocalizedMessage());
+            System.err.println("File " + fileName + " was not found.\n" + e.getLocalizedMessage());
+        } catch (DateTimeParseException e) {
+            System.err.println("Date format is not correct on line: " + lineCounter + "\n" + e.getLocalizedMessage());
+        } catch (NumberFormatException e){
+            System.err.println("Wrong number format on line: " + lineCounter + "\n" + e.getLocalizedMessage());
         } finally {
             System.out.println("Loaded " +plants.size()+ " items.");
         }
     }
 
     //Metoda pro zapis do souboru
-
     public void savePlantsToFile(String fileName) throws PlantException{
         try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName)))) {
             for (Plant plant : plants) {
                 writer.println(
                         plant.getName() + getDelimiter() +
                                 plant.getNotes() + getDelimiter() +
-                                plant.getWateringInfo() + getDelimiter() +
+                                plant.getFrequencyOfWatering() + getDelimiter() +
+                                plant.getWatering() + getDelimiter() +
                                 plant.getPlanted());
             }
         } catch (IOException e) {
@@ -73,7 +102,7 @@ public class PlantList {
 
 
     //Odebrani kvetiny ze seznamu
-    public void removePlant(int index){
+    public void removePlant(int index) {
         System.out.println("Removing plant from list.");
         plants.remove(index);
     }
