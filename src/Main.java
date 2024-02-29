@@ -26,17 +26,10 @@ public class Main {
 
         System.out.println("\nList of plants: " + plantList.getPlants() + "\n");
 
-        // Pridani novych kvetin
-        try {
-            plantList.addPlant(new Plant("Africka kopriva", "jedovata", 7, LocalDate.of(2023, 8, 12), LocalDate.of(2023, 8, 10)));
-        } catch (PlantException e) {
-            throw new PlantException("File was not saved correctly.\n" + e.getLocalizedMessage());
-        }
-        try {
-            plantList.addPlant(new Plant("Bazalka"));
-        } catch (PlantException e) {
-            throw new PlantException("File was not saved correctly.\n" + e.getLocalizedMessage());
-        }
+        //Pridani novych kvetin
+        plantList.addPlant(new Plant("Africka kopriva", "jedovata", 7, LocalDate.of(2023, 8, 12), LocalDate.of(2023, 8, 10)));
+        plantList.addPlant(new Plant("Bazalka"));
+
 
         //Vypsani kvetiny pomoci indexu
         plantList.getPlantByIndex(1);

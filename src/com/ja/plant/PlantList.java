@@ -112,7 +112,7 @@ public class PlantList {
         this.plants.addAll(plants);
     }
 
-    //
+    //Razeni kvetin podle zalivky
     public StringBuilder getPlantsSortedByWatering() {
         List<Plant> sortedPlants = new ArrayList<>(plants);
         sortedPlants.sort(Comparator.comparing(Plant::getWateringInfo));

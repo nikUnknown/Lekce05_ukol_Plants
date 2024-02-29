@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be8880f7-0f03-4891-bc75-c9c549ec2f8c" name="Changes" comment="Lekce05_ukol_Plants">
+    <list default="true" id="be8880f7-0f03-4891-bc75-c9c549ec2f8c" name="Changes" comment="Lekce05_ukol_Plants&#10;- oprava metod&#10;- dopsani vyjimek&#10;- prace se soubory">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/kvetiny.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resources/kvetiny.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ja/plant/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ja/plant/Plant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ja/plant/PlantList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ja/plant/PlantList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,14 +99,23 @@
       <option name="project" value="LOCAL" />
       <updated>1709141105331</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Lekce05_ukol_Plants&#10;- oprava metod&#10;- dopsani vyjimek&#10;- prace se soubory">
+      <option name="closed" value="true" />
+      <created>1709147350737</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1709147350737</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Lekce05_ukol_Plants&#10;- pridani seznamu kvetin" />
     <MESSAGE value="Lekce05_ukol_Plants&#10;- pridani seznamu kvetin&#10;- uprava main&#10;- pridani metody pro trizeni seznamu kvetin a infa o zalivce" />
     <MESSAGE value="Lekce05_ukol_Plants" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lekce05_ukol_Plants" />
+    <MESSAGE value="Lekce05_ukol_Plants&#10;- oprava metod&#10;- dopsani vyjimek&#10;- prace se soubory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lekce05_ukol_Plants&#10;- oprava metod&#10;- dopsani vyjimek&#10;- prace se soubory" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
